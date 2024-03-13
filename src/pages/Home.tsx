@@ -1,13 +1,13 @@
-import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
-import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
-import googleIconImg from "../assets/images/google-icon.svg";
-import { Button } from "../components/Button";
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import illustrationImg from '../assets/images/illustration.svg';
+import logoImg from '../assets/images/logo.svg';
+import googleIconImg from '../assets/images/google-icon.svg';
+import { Button } from '../components/Button';
 
-import "../styles/auth.scss";
-import { database } from "../services/firebase";
+import '../styles/auth.scss';
+import { database } from '../services/firebase';
 
 export function Home() {
   const navigate = useNavigate();
@@ -19,31 +19,31 @@ export function Home() {
       await signInWithGoogle();
     }
 
-    navigate("/rooms/new");
+    navigate('/rooms/new');
   }
 
   async function createForm(event: FormEvent) {
     event.preventDefault();
 
-    if(roomCode.trim() === '') {
+    if (roomCode.trim() === '') {
       return;
     }
 
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-    if(!roomRef.exists()) {
+    if (!roomRef.exists()) {
       alert('Room does not exist');
       return;
     }
 
-    if(roomRef.val().endedAt) {
+    if (roomRef.val().endedAt) {
       alert('Room already close');
       return;
     }
 
     navigate(`/rooms/${roomCode}`);
   }
-  
+
   return (
     <div id="page-auth">
       <aside>

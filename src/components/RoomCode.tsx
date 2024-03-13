@@ -5,13 +5,12 @@ import toast, { Toaster } from 'react-hot-toast';
 
 type RoomCodeProps = {
   code: any;
-} 
+};
 
 export function RoomCode(props: RoomCodeProps) {
-    
   function copyRoomCodeToClipboard() {
-    toast.success("Copied!");
-    navigator.clipboard.writeText(props.code)
+    toast.success('Copied!');
+    navigator.clipboard.writeText(props.code);
   }
 
   return (
@@ -21,6 +20,5 @@ export function RoomCode(props: RoomCodeProps) {
       </div>
       <span>Room #{props.code}</span>
     </button>
-    
-  )
+  );
 }

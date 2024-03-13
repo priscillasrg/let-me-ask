@@ -1,17 +1,16 @@
-import { FormEvent, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button } from "../components/Button";
-import { RoomCode } from "../components/RoomCode";
-import { Question } from "../components/Question";
-import { useRoom } from "../hooks/useRoom";
+import { Button } from '../components/Button';
+import { RoomCode } from '../components/RoomCode';
+import { Question } from '../components/Question';
+import { useRoom } from '../hooks/useRoom';
 
-import logoImg from "../assets/images/logo.svg";
-import deleteImg from "../assets/images/delete.svg";
+import logoImg from '../assets/images/logo.svg';
+import deleteImg from '../assets/images/delete.svg';
 
-import toast, { Toaster } from "react-hot-toast";
-import "../styles/room.scss";
-import { database } from "../services/firebase";
+import toast, { Toaster } from 'react-hot-toast';
+import '../styles/room.scss';
+import { database } from '../services/firebase';
 
 type RoomParams = {
   id: string;
@@ -26,15 +25,15 @@ export function AdminRoom() {
   const { title, questions } = useRoom(roomId);
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Would you like to remove this question?")) {
+    if (window.confirm('Would you like to remove this question?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
 
   async function handleEndRoom() {
-    await database.ref(`rooms/${roomId}`).update( {
+    await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date(),
-    })
+    });
 
     navigate('/');
   }
@@ -46,8 +45,10 @@ export function AdminRoom() {
           <img src={logoImg} alt="Let me ask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined
-            onClick={handleEndRoom}> Close room</Button>
+            <Button isOutlined onClick={handleEndRoom}>
+              {' '}
+              Close room
+            </Button>
           </div>
         </div>
       </header>

@@ -1,17 +1,17 @@
-import { FormEvent, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { FormEvent, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import logoImg from "../assets/images/logo.svg";
+import logoImg from '../assets/images/logo.svg';
 
-import { Button } from "../components/Button";
-import { RoomCode } from "../components/RoomCode";
-import { useAuth } from "../hooks/useAuth";
-import { database } from "../services/firebase";
+import { Button } from '../components/Button';
+import { RoomCode } from '../components/RoomCode';
+import { useAuth } from '../hooks/useAuth';
+import { database } from '../services/firebase';
 
-import "../styles/room.scss";
-import toast, { Toaster } from "react-hot-toast";
-import { Question } from "../components/Question";
-import { useRoom } from "../hooks/useRoom";
+import '../styles/room.scss';
+import toast, { Toaster } from 'react-hot-toast';
+import { Question } from '../components/Question';
+import { useRoom } from '../hooks/useRoom';
 
 type RoomParams = {
   id: string;
@@ -21,7 +21,7 @@ export function Room() {
   // const navigate = useNavigate();
   const { user } = useAuth();
   const params = useParams<RoomParams>();
-  const [newQuestion, setNewQuestion] = useState("");
+  const [newQuestion, setNewQuestion] = useState('');
   const roomId: any = params.id;
 
   const { title, questions } = useRoom(roomId);
@@ -29,13 +29,13 @@ export function Room() {
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
 
-    if (newQuestion.trim() === "") {
-      return toast.error("Question cannot be empty");
+    if (newQuestion.trim() === '') {
+      return toast.error('Question cannot be empty');
     }
 
     if (!user) {
       //   throw new Error('You must be logged in');
-      toast.error("You must be logged");
+      toast.error('You must be logged');
     }
 
     const question = {
@@ -50,11 +50,14 @@ export function Room() {
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
 
-    setNewQuestion("");
-    toast.success("Question created successfully!");
+    setNewQuestion('');
+    toast.success('Question created successfully!');
   }
 
-  async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
+  async function handleLikeQuestion(
+    questionId: string,
+    likeId: string | undefined
+  ) {
     if (likeId) {
       await database
         .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
