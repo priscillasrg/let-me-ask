@@ -17,7 +17,6 @@ export function NewRoom() {
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
-    // console.log(newRoom)
 
     if (newRoom.trim() === '') {
       return toast.error('Name of room cannot be empty');
@@ -50,17 +49,19 @@ export function NewRoom() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Let me ask" />
-          {/* <h1>{user?.name}</h1> */}
+
+          <h3>Hello =) {user?.name}</h3>
+          
           <h2>Create new room</h2>
 
           <form onSubmit={handleCreateRoom}>
             <input
               type="text"
-              placeholder="Name of room"
+              placeholder="Name"
               onChange={(event) => setNewRoom(event.target.value)}
               value={newRoom}
             />
-            <Button type="submit">Create room</Button>
+            <Button type="submit">Confirm</Button>
           </form>
           <p>
             Do you want entry in one created room?{' '}

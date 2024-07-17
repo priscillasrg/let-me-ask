@@ -59,7 +59,7 @@ export function Home() {
           <img src={logoImg} alt="Let me ask" />
           <button onClick={handleCreateRoom} className="create-room">
             <img src={googleIconImg} alt="Logo Google" />
-            Create your room with Google
+            Sign in Google
           </button>
           <div className="separator">or join one room</div>
           <form onSubmit={createForm}>
