@@ -56,8 +56,16 @@
     }
 
     h2 {
+      color: #3f3f3f;
       font-size: 24px;
-      margin: 64px 0 24px;
+      margin: 50px 0 24px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    h3 {
+      color: #e559f9;
+      font-size: 20px;
+      margin: 10px 0 0 0;
       font-family: 'Poppins', sans-serif;
     }
 
@@ -96,7 +104,7 @@
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background: #ea4335;
+    background: #d875ff;
     color: #fff;
 
     display: flex;
