@@ -20,10 +20,7 @@ Install yarn:
 ```
 yarn install
 ```
-Run the application:
-```
-yarn start
-```
+
 Firebase
  - Creater some personal project using Realtime database
  - Inside of Realtime database, set-up your preferred rules, or follow this one:
@@ -60,3 +57,9 @@ REACT_APP_STORAGE_BUCKET="your-storage-bucket"
 REACT_APP_MESSAGE_SENDER_ID="your-sender-id"
 REACT_APP_APP_ID="your-app-id"
 ```
+
+Run the application:
+```
+yarn start
+```
+- Port: http://localhost:3000/
