@@ -49,7 +49,8 @@ Firebase
   }
 }
 ```
- - Create one file called: .env.local
+ - Create one file called:  .env.local
+ - Add the variables bellow, but change for the information in your Firebase
 ```
 REACT_APP_API_KEY="your-api-key"
 REACT_APP_AUTH_DOMAIN="your-auth-domain"
