@@ -24,4 +24,38 @@ Run the application:
 ```
 yarn start
 ```
- 
+Firebase
+ - Creater some personal project using Realtime database
+ - Inside of Realtime database, set-up your preferred rules, or follow this one:
+```
+{
+  "rules": {
+    "rooms": {
+      ".read": false,
+      ".write": "auth != null",
+      "$roomId": {
+        ".read": true,
+        ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",
+        "questions": {
+          ".read": true,
+          ".write": "auth != null && (!data.exists() || data.parent().child('authorId').val() == auth.id)",
+          "likes": {
+            ".read": true,
+            ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",  
+          }
+        }
+      }
+    }
+  }
+}
+```
+ - Create one file called: .env.local
+```
+REACT_APP_API_KEY="your-api-key"
+REACT_APP_AUTH_DOMAIN="your-auth-domain"
+REACT_APP_DATABASE_URL="your-database-url"
+REACT_APP_PROJECT_ID="your-project-id"
+REACT_APP_STORAGE_BUCKET="your-storage-bucket"
+REACT_APP_MESSAGE_SENDER_ID="your-sender-id"
+REACT_APP_APP_ID="your-app-id"
+```
